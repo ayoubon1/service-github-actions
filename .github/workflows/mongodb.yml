@@ -19,7 +19,7 @@ jobs:
 
  
     container:
-      image:  node:10.16-jessie
+      image: node:18.10
 
     services:
       mongodb:
