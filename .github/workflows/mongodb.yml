@@ -1,0 +1,54 @@
+name: Mongodb Service Example
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+    - develop
+
+defaults:
+  run:
+    working-directory: ./mongodb
+
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+
+ 
+    container:
+      image:  node:10.16-jessie
+
+    services:
+      mongodb:
+        image: mongo
+        ports:
+        - 27017:27017
+
+    steps:
+    - uses: actions/checkout@v1
+    - run: npm ci
+    - run: node client.js
+      env:
+        MONGODB_HOST: mongodb
+        MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }}
+
+
+  vm-job:
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo
+        ports:
+        - 27017/tcp
+
+    steps:
+    - uses: actions/checkout@v1
+    - run: npm ci
+    - run: node client.js
+      env:
+        MONGODB_HOST: localhost
+        MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }} # get randomly assigned published port
