@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Call reusable Workflow
-        uses: ./.github/workflows/reusableworkflow.yml
+        uses: ./.github/workflows/mongodb.yml
 
       - name: Continue with Main Workflow Steps
         run: echo "This is a main workflow step."
