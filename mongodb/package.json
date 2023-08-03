@@ -1,0 +1,25 @@
+{
+  "name": "mongodb",
+  "version": "1.0.0",
+  "description": "mongodb service concept github actions",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "service-github-actions"
+  },
+  "keywords": [
+    "mongodb",
+    "git",
+    "service",
+    "node",
+    "database"
+  ],
+  "author": "Ayoub Khouadri",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^5.7.0"
+  }
+}
