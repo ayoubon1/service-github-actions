@@ -1,4 +1,4 @@
-name: Second Mongodb Service the reusable workflow
+name: Mongodb Service the reusable workflow
 
 on:
   workflow_call:
@@ -50,4 +50,4 @@ jobs:
           MONGODB_HOST: localhost
           MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }} # get randomly assigned published port
       - run: |
-          echo "The reusable workflow on the second branch"
+          echo "The reusable workflow is called successfully"
