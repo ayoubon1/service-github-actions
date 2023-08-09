@@ -4,11 +4,11 @@ on:
   workflow_call:
   push:
     branches:
-    - master
+      - '*'
   pull_request:
     branches:
-    - master
-    - develop
+      - master
+      - develop
 
 defaults:
   run:
@@ -17,8 +17,6 @@ defaults:
 jobs:
   container-job:
     runs-on: ubuntu-latest
-
- 
     container:
       image: node:18.10
 
@@ -26,17 +24,15 @@ jobs:
       mongodb:
         image: mongo
         ports:
-        - 27017:27017
+          - 27017:27017
 
     steps:
-    - uses: actions/checkout@v1
-    - run: npm ci
-    - run: node client.js
-      env:
-        MONGODB_HOST: mongodb
-        MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }}
-
-
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: node client.js
+        env:
+          MONGODB_HOST: mongodb
+          MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }}
   vm-job:
     runs-on: ubuntu-latest
 
@@ -44,12 +40,14 @@ jobs:
       mongodb:
         image: mongo
         ports:
-        - 27017/tcp
+          - 27017/tcp
 
     steps:
-    - uses: actions/checkout@v1
-    - run: npm ci
-    - run: node client.js
-      env:
-        MONGODB_HOST: localhost
-        MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }} # get randomly assigned published port
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: node client.js
+        env:
+          MONGODB_HOST: localhost
+          MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }} # get randomly assigned published port
+      - run: |
+          echo "The reusable workflow on the second branch"
