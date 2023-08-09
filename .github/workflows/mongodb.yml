@@ -1,4 +1,4 @@
-name: Mongodb Service Example
+name: Mongodb Service the reusable workflow
 
 on:
   workflow_call:

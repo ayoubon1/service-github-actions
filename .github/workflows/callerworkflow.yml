@@ -1,15 +1,8 @@
-name: Main Workflow
+name: Starter workflow 
 
 on:
   workflow_dispatch: 
 
 jobs:
-  main:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Call reusable Workflow
+     Call-mongodb-service-the-reusable-Workflow:
         uses: ./.github/workflows/mongodb.yml
-
-      - name: Continue with Main Workflow Steps
-        run: echo "This is a main workflow step."
