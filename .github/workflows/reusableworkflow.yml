@@ -11,7 +11,11 @@ on:
         required: true
 
 jobs:
-  triage:
+    uses: ./.github/workflows/callerworkflow.yml@main
+    with:
+      config-path: .github/callerworkflow.yml
+    secrets: inherit
+     triage:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@v4
