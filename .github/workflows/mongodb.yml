@@ -1,6 +1,7 @@
 name: Mongodb Service Example
 
 on:
+  workflow_call:
   push:
     branches:
     - master
@@ -51,4 +52,4 @@ jobs:
     - run: node client.js
       env:
         MONGODB_HOST: localhost
-        MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }} # get randomly assigned published port
+        MONGODB_PORT: ${{ job.services.mongodb.ports }} # get randomly assigned published port
