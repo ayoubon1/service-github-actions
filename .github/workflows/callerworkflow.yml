@@ -4,5 +4,5 @@ on:
   workflow_dispatch: 
 
 jobs:
-     Call-mongodb-service-the-reusable-Workflow:
+     Call-the-reusable-Workflow:
         uses: ./.github/workflows/mongodb.yml
