@@ -33,21 +33,4 @@ jobs:
         env:
           MONGODB_HOST: mongodb
           MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }}
-  vm-job:
-    runs-on: ubuntu-latest
-
-    services:
-      mongodb:
-        image: mongo
-        ports:
-          - 27017/tcp
-
-    steps:
-      - uses: actions/checkout@v2
-      - run: npm ci
-      - run: node client.js
-        env:
-          MONGODB_HOST: localhost
-          MONGODB_PORT: ${{ job.services.mongodb.ports[27017] }} # get randomly assigned published port
-      - run: |
-          echo "The reusable workflow is called successfully"
+ 
